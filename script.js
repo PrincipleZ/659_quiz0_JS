@@ -21,7 +21,7 @@ function start(){
         navigator.mediaDevices.getUserMedia({ video: {
             facingMode: "environment"
         } }).then(function(stream) {
-            //video.src = window.URL.createObjectURL(stream);
+            // video.src = window.URL.createObjectURL(stream);
             video.srcObject = stream;
             video.play();
             requestAnimationFrame(step);
