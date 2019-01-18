@@ -20,7 +20,7 @@ function start(){
     // Not adding `{ audio: true }` since we only want video now
         navigator.mediaDevices.getUserMedia({ video: {
             facingMode: "environment",
-            width: 1280
+            width: 640
         } }).then(function(stream) {
             // video.src = window.URL.createObjectURL(stream);
             video.srcObject = stream;
@@ -64,6 +64,8 @@ function registerEvents(){
     var picking = false;
     canvas.addEventListener("mousedown", function (e) {
         picking = true;
+        e.stopPropagation();
+        e.preventDefault();
         mousePos = getMousePos(canvas, e);
         colorPicked = pickColor(mousePos.x, mousePos.y);
     }, false);
@@ -86,6 +88,8 @@ function registerEvents(){
 
     canvas.addEventListener("touchstart", function (e) {
         mousePos = getTouchPos(canvas, e);
+        e.stopPropagation();
+        e.preventDefault();
         var touch = e.touches[0];
         var mouseEvent = new MouseEvent("mousedown", {
             clientX: touch.clientX,
