@@ -19,7 +19,8 @@ function start(){
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     // Not adding `{ audio: true }` since we only want video now
         navigator.mediaDevices.getUserMedia({ video: {
-            facingMode: "environment"
+            facingMode: "environment",
+            width: 1280
         } }).then(function(stream) {
             // video.src = window.URL.createObjectURL(stream);
             video.srcObject = stream;
